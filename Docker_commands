@@ -1,0 +1,71 @@
+Docker Commands
+
+# Download the Docker Desktop .deb package
+curl -LO https://desktop.docker.com/linux/main/amd64/docker-desktop-4.20.1-amd64.deb
+
+# Install the .deb package
+sudo dpkg -i ./docker-desktop-4.20.1-amd64.deb
+
+# Fix any dependency issues
+sudo apt-get install -f
+
+# Start Docker Desktop
+systemctl --user start docker-desktop
+
+# Enable Docker Desktop to start on login
+systemctl --user enable docker-desktop
+
+# Verify Docker installation
+docker --version
+
+docker build .
+
+docker image ls
+
+docker run 5f764d8b8cea [IMAGE ID]
+
+docker ps // running containers
+docker ps -a //all
+
+docker stop hungry_dijkstra[IMAGE NAME]
+
+docker run -p 3000:3000 [IMAGE ID]
+This flag maps a port on the host machine to a port inside the container.
+The first 3000 is the port on the host machine.
+The second 3000 is the port inside the container.
+docker run -d -p 3001:3000 [Image ID]
+
+-d detach mode
+
+docker run -d --rm -p 3001:3000 ID // when we stop container it will automatically remove
+
+docker run -d --rm --name "conatinerName" -p 3001:3000 ID 
+
+docker build -t mywebapp:01 (tagging Imagename:version)
+
+docker rmi mywebapp:01
+
+docker pull IMAGE_NAME ( dockerhub )
+
+docker run -it IMAGE_ID
+
+https://docs.docker.com/desktop/get-started/#credentials-management-for-linux-users
+
+docker push adarshnode/adarsh-docker-repo:tagname
+:
+docker run -it --rm -v [volume name]:/myapp (same path as file) ID
+
+docker volume --help
+
+docker run -v [path of file on local machine]:[path in the container] --rm ID
+
+docker newtwork --help
+
+docker run ... --network my-net(name of network)
+
+docker login
+
+docker-compose build
+
+docker-compose up/down
+
